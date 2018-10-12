@@ -1,0 +1,8 @@
+---
+minikube-host-remote:
+  hosts: ip-OR-somedomain.com
+
+minikube-host-local:
+  hosts: 
+    localhost:
+      ansible_connection: local

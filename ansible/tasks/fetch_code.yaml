@@ -1,0 +1,11 @@
+---
+
+- name: Download git
+  package:
+    name: git
+    state: present
+
+- name: Clone applications
+  git:
+    repo: 'https://github.com/Elgarni/minimal-kubernetes-cluster.git'
+    dest: /usr/local/share/cluster

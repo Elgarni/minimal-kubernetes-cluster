@@ -1,0 +1,13 @@
+---
+- hosts: minikube-host-local
+
+  roles:
+     - role: geerlingguy.swap
+       swap_file_size_mb: 5000
+     - geerlingguy.docker
+     - andrewrothstein.minikube
+
+  tasks:
+  - import_tasks: ./tasks/fetch_code.yaml
+  - import_tasks: ./tasks/build_docker_images.yaml
+  - import_tasks: ./tasks/create_k8s_resources.yaml

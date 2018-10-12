@@ -1,0 +1,29 @@
+---
+
+- find:
+    paths: ~/.minikube/machines
+    file_type: directory
+    patterns: "minikube"
+  register: dir_files
+
+- name: Ensure minikube is stopped
+  shell: minikube stop
+  when: dir_files.matched|int != 0
+
+- name: Start Minikube cluster
+  shell: minikube start --vm-driver none
+
+- name: Minkube Enabling ingress
+  shell: minikube addons enable ingress
+
+- name: Kubectl- create Redis resources
+  shell: kubectl apply -f /usr/local/share/cluster/kubernetes/redis
+
+- name: Kubectl- create Spring resources
+  shell: kubectl apply -f /usr/local/share/cluster/kubernetes/spring
+
+- name: Kubectl- create Frontend resources
+  shell: kubectl apply -f /usr/local/share/cluster/kubernetes/frontend
+
+- name: Kubectl- create Ingress resource
+  shell: kubectl apply -f /usr/local/share/cluster/kubernetes/ingress

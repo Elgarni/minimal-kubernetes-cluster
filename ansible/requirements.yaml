@@ -1,0 +1,10 @@
+# install required roles from Galaxy Hub
+
+# This role is for creating swap space in case of a low-memory server
+- src: geerlingguy.swap
+
+# This role is for installing docker
+- src: geerlingguy.docker
+
+# This role is for installing Minikube
+- src: andrewrothstein.minikube

@@ -1,0 +1,31 @@
+---
+
+- name: Download Python pip
+  package:
+    name: python-pip
+    state: present
+
+- name: Install docker dependent python modules
+  pip:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - docker-py==1.10.6
+
+- name: Build Backend-Spring docker image
+  docker_image:
+    path: /usr/local/share/cluster/applications/backend-spring
+    name: backendapp
+    tag: v1
+
+- name: Build Backend-Redis docker image
+  docker_image:
+    path: /usr/local/share/cluster/applications/backend-redis
+    name: redis-server
+    tag: v1
+
+- name: Build Frontend docker image
+  docker_image:
+    path: /usr/local/share/cluster/applications/frontend
+    name: frontendapp
+    tag: v1

@@ -1,0 +1,40 @@
+ext {
+    redisClientVersion  = "2.9.0"
+    redisLuttceVersion  = "5.0.0.Beta1"
+}
+
+buildscript {
+    ext {
+        springBootVersion = '2.0.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile "org.springframework.boot:spring-boot-starter-data-redis"
+    compile "redis.clients:jedis:${redisClientVersion}"
+    compile  "biz.paluch.redis:lettuce:${redisLuttceVersion}"
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./css/bulma.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/custom.css"/>
+    <script type="text/javascript"  src="./js/app.js"></script>
+    <title>K8s Tryout</title>
+  </head>
+  <body class="black-bg">
+    <section class="card hero is-medium is-warning has-text-centered">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-size-1">
+        Time in Redis is
+      </h1>
+    </div>
+    </div>
+  </section>
+
+  <section class="hero has-text-centered">
+  <div class="hero-body">
+    <div class="container">
+      <h2 id="time" class="subtitle has-text-weight-bold has-text-warning">
+          loading...
+      </h2>
+    </div>
+  </div>
+  </section>
+
+    <footer class="footer black-bg">
+      <div class="content has-text-centered has-text-white ">
+        <span>Total Number of Requests Made : </span> <span id="requests_number" class="has-text-weight-bold has-text-white">loading...</span>
+      </div>
+    </footer>
+
+  <script>
+    startApp();
+  </script>
+  </body>
+</html>
